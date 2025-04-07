@@ -1,0 +1,17 @@
+{
+  "name": "websocket-server",
+  "version": "1.0.0",
+  "type": "module",
+  "private": true,
+  "description": "websocket-server",
+  "scripts": {
+    "server": "set NODE_ENV=dev && nodemon  ./server/server.js"
+  },
+  "dependencies": {
+    "amqplib": "^0.10.3",
+    "dotenv": "^16.4.5",
+    "http": "^0.0.1-security",
+    "nodemon": "^3.1.0",
+    "socket.io": "^4.7.5"
+  }
+}

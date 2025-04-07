@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>@ViewData["Title"] - Remote Config</title>
+
+  <link rel="stylesheet" href="~/lib/jqueryui/themes/base/theme.css" />
+  <link rel="stylesheet" href="~/lib/jqueryui/themes/base/jquery-ui.css" />
+  <link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="~/lib/bootstrap/scss/custom.css" />
+
+  @*<link href="~/lib/bootstrap-dark-mode/bootstrap-dark-mode.dark.min.css" rel="stylesheet" />*@
+  @*<link href="~/lib/bootstrap-dark-mode/bootstrap-dark-mode.min.css" rel="stylesheet" />*@
+
+  <link rel="stylesheet" href="~/lib/elfinder/css/elfinder.full.css" />
+  @*<link rel="stylesheet" href="~/lib/elfinder/css/theme.min.css" />*@
+  <link rel="stylesheet" href="~/css/elFinder-Material-Theme-master/Material/css/theme-gray.min.css" />
+  @*<link rel="stylesheet" href="~/css/elFinder-Material-Theme-master/Material/css/theme-light.min.css" />*@
+  <link rel="stylesheet" href="~/css/custom.css" asp-append-version="true" />
+
+  <script src="~/js/crypto-js.min.js"></script>
+  <script src="~/lib/jquery/jquery.min.js"></script>
+  <script src="~/lib/jqueryui/jquery-ui.min.js"></script>
+  <script src="~/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="~/lib/elfinder/js/elfinder.min.js"></script>
+
+</head>
+<body class="dark">
+
+  @RenderBody()
+
+  @await RenderSectionAsync("Scripts", required: false)
+
+</body>
+</html>

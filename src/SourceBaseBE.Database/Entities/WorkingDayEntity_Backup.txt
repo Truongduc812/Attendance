@@ -1,0 +1,59 @@
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
+using iSoft.Database.Entities;
+using System.Runtime.CompilerServices;
+using SourceBaseBE.Database.Enums;
+using iSoft.Common.Enums;
+
+namespace SourceBaseBE.Database.Entities
+{
+  public class WorkingDayEntity : BaseCRUDEntity
+  {
+    [Column("working_date")]
+    public DateTime? working_date { get; set; }
+
+    [Column("time_in")]
+    public DateTime? time_in { get; set; }
+
+    [Column("time_out")]
+    public DateTime? time_out { get; set; }
+
+    [Column("time_deviation")]
+    public long? TimeDeviation { get; set; }
+
+    [Column("working_day_status")]
+    public EnumWorkingDayStatus? WorkingDayStatus { get; set; }
+
+    [Column("notes")]
+    public string? Notes { get; set; }
+
+    [Column("origin_working_date")]
+    public DateTime? OriginalWorkDate { get; set; }
+
+    [Column("origin_time_in")]
+    public DateTime? OriginTimeIn { get; set; }
+
+    [Column("origin_time_out")]
+    public DateTime? OriginTimeOut { get; set; }
+
+    [Column("origin_time_deviation")]
+    public long? OriginTimeDeviation { get; set; }
+
+    [Column("origin_working_day_status")]
+    public EnumWorkingDayStatus? OriginWorkingDayStatus { get; set; }
+
+    [Column("origin_working_type")]
+    public EnumWorkingType? OriginWorkingType { get; set; }
+
+
+
+    [ForeignKey(nameof(EmployeeEntity))]
+    public long? EmployeeEntityId { get; set; }
+    public EmployeeEntity? ItemEmployeeEntity { get; set; }
+
+    //[ForeignKey(nameof(TimeSheetEntity))]
+    //public long? EmployeeEntityId { get; set; }
+    //public EmployeeEntity? ItemEmployeeEntity { get; set; }
+
+  }
+}

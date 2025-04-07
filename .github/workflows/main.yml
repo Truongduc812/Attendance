@@ -1,0 +1,87 @@
+name: cicd main
+on:
+    pull_request:
+        types: [closed]
+        branches:
+            - main
+
+    # push:
+    #     branches:
+    #         - 'test/cicd'
+
+jobs:
+    release:
+        if: github.event.pull_request.merged == true
+        runs-on: [self-hosted, cicd]
+
+        steps:
+            - uses: TooMuch4U/actions-clean@v2.1
+            - name: Setup .NET
+              uses: actions/setup-dotnet@v4
+              with:
+                  dotnet-version: '7.0.x'
+
+            # - name: clone source if needed
+            #   run: |
+            #       cd /usr/app
+            #       mkdir PRPO || cd PRPO/
+            #       ls -a | grep PRPO-BE || git clone git@github.com:iSoft-Team/PRPO-BE.git
+
+            - name: pull latest source
+              run: |
+                  cd /usr/app/Attendance-Web-BE
+                  git fetch --all
+                  git stash --include-untracked
+                  git reset --hard
+                  git clean -fd
+                  git checkout main
+                  git pull origin main
+                  cat /etc/secret/attendance/env.at-auth > src/SourceBaseBE.AuthenticationService/.env
+                  cat /etc/secret/attendance/env.at-main > src/SourceBaseBE.MainService/.env
+
+            # release:
+            #     needs: build
+
+            #     runs-on: [self-hosted, dev]
+
+            #     steps:
+            # - uses: TooMuch4U/actions-clean@v2.1
+            # docker build -t at-virtual:dev -f src/SourceBaseBE.VirtualDeviceService/Dockerfile .
+            # docker rmi registry.i-soft.com.vn/at-virtual:dev || ls
+            # docker tag at-virtual:dev registry.i-soft.com.vn/at-virtual:dev
+            # docker build -t at-socket:dev -f src/SourceBaseBE.SocketIOServer/Dockerfile .
+            # docker rmi registry.i-soft.com.vn/at-socket:dev || ls
+            # docker tag at-socket:dev registry.i-soft.com.vn/at-socket:dev
+            # docker build -t at-config:dev -f src/SourceBaseBE.RemoteConfig/Dockerfile .
+            # docker rmi registry.i-soft.com.vn/at-config:dev || ls
+            # docker tag at-config:dev registry.i-soft.com.vn/at-config:dev
+            # docker build -t at-auth:dev -f src/SourceBaseBE.AuthenticationService/Dockerfile .
+            # docker rmi registry.i-soft.com.vn/at-auth:dev || ls
+            # docker tag at-auth:dev registry.i-soft.com.vn/at-auth:dev
+            - name: prepare services' images
+              run: |
+                  cd /usr/app/Attendance-Web-BE
+                  git checkout main
+                  docker build -t at-main:dev -f src/SourceBaseBE.MainService/Dockerfile .
+                  docker rmi registry.i-soft.com.vn/at-main:dev || ls
+                  docker tag at-main:dev registry.i-soft.com.vn/at-main:dev
+
+            - name: push image to registry
+              run: |
+                  docker push registry.i-soft.com.vn/at-main:dev
+
+    deploy:
+        needs: release
+
+        runs-on: [self-hosted, cicd]
+
+        steps:
+            # docker service update attendance-swarm-dev_at-config --image registry.i-soft.com.vn/at-config:dev
+            # docker service update attendance-swarm-dev_at-auth --image registry.i-soft.com.vn/at-auth:dev
+            # docker service update attendance-swarm-dev_at-virtual --image registry.i-soft.com.vn/at-virtual:dev
+            # docker service update attendance-swarm-dev_at-socket --image registry.i-soft.com.vn/at-socket:dev
+            - uses: TooMuch4U/actions-clean@v2.1
+            - name: start application in dev environment
+              run: |
+                  docker service update attendance-swarm-dev_at-main --image registry.i-soft.com.vn/at-main:dev
+                  echo 'Deploy app DONE'

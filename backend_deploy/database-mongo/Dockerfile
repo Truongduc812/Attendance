@@ -1,0 +1,2 @@
+
+COPY mongodb-keyfile /var

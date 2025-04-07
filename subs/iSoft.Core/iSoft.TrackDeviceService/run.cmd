@@ -1,0 +1,1 @@
+dotnet UDF.TrackDeviceService.dll --urls="http://localhost:5300"

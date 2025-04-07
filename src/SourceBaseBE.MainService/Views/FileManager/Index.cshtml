@@ -1,0 +1,114 @@
+﻿@{
+  Layout = "_Layout";
+  ViewBag.Title = "File Manager";
+}
+
+
+<div class="wh-100 oh">
+  <div class="wrap_file_manager wh-100 oh">
+    <div id="elfinder" class="wh-100 oh"></div>
+  </div>
+</div>
+<script>
+  var elfinderInstance;
+  var options;
+</script>
+
+@section Scripts {
+  <script>
+
+    // Documentation for client options:
+    // https://github.com/Studio-42/elFinder/wiki/Client-configuration-options
+    $(document).ready(function () {
+      var myCommands = elFinder.prototype._options.commands;
+
+      // Not yet implemented commands in elFinder.NetCore
+      var disabled = ['callback', 'chmod', 'editor', 'netmount', 'ping', 'search', 'zipdl', 'help'];
+      elFinder.prototype.i18.en.messages.TextArea = "Edit";
+
+      $.each(disabled, function (i, cmd) {
+        (idx = $.inArray(cmd, myCommands)) !== -1 && myCommands.splice(idx, 1);
+      });
+
+      options = {
+        baseUrl: "/lib/elfinder/",
+        url: "/el-finder-file-system/connector",
+
+        commands: myCommands,
+        uiOptions: {
+          toolbarExtra: {
+            // also displays the text label on the button (true / false / 'none')
+            displayTextLabel: true,
+            // show Preference button into contextmenu of the toolbar (true / false)
+            preferenceInContextmenu: false,
+          },
+          tree: {
+            // expand current root on init
+            openRootOnLoad: true,
+            // auto load current dir parents
+            syncTree: true
+          },
+          cwd: {
+            //validName: /^(?!.*\.tmb$).*$/,
+            oldSchool: false,
+            listView: {
+              columns: ['size', 'date', 'kind'], //['name', 'perm', 'date', 'size', 'kind']
+            },
+            filter: function (file) {
+              return file.name !== '.tmb';
+            },
+          },
+          toolbar: [
+            ['back', 'forward'],
+            ['reload'],
+            ['home', 'up'],
+            ['upload'],
+            ['open', 'download'],
+            ['undo', 'redo'],
+            ['info'],
+            ['quicklook'],
+            ['copy', 'cut', 'paste'],
+            ['duplicate', 'rename'],
+            ['view', 'sort']
+          ],
+        },
+        contextmenu: {
+          navbar: ['open', '|', 'copy', 'cut', 'paste', 'duplicate', '|', 'rm', '|', 'info'],
+          // navbar: ['copy', 'paste'],
+
+          cwd: ['reload', 'back', '|', 'upload', 'mkdir', 'mkfile', 'paste', '|', 'info'],
+          // cwd: ['upload', '|', 'paste'],
+
+          //FileSystemDirectoryHandle:[]
+          files: [
+            'getfile', '|', 'open', 'quicklook', '|', 'download', '|', 'copy', 'cut', 'paste', 'duplicate', '|',
+            'rm', '|', 'edit', 'rename', 'resize', '|', 'archive', 'extract', '|', 'info'
+          ]
+          // files: [
+          //   'open', 'download', '|', 'copy', 'cut', 'paste', 'duplicate', '|', 'rename', 'rm'
+          // ]
+        },
+        // onlyMimes: ["image/gif", "image/jpeg", "image/jpg", "image/png", "video/mp4"],
+        lang: 'en', // en, vi
+        rememberLastDir: true,
+        width: 'auto',
+        height: 'auto',
+        //reloadClearHistory: true,
+        //useBrowserHistory: false,
+      };
+
+      elfinderInstance = $('#elfinder').elfinder(options).elfinder('instance');
+    });
+
+                                                                                                //$(document).ready(function () {
+                                                                                                //  setTimeout(() => {
+                                                                                                //    options['lang'] = 'vi';
+                                                                                                //    $('#elfinder').remove();
+                                                                                                //    $('.wrap_file_manager').html('<div id="elfinder" class="wh-100 oh"></div>');
+                                                                                                //    elfinderInstance = $('#elfinder').elfinder(options).elfinder('instance');
+                                                                                                //  }, 1000);
+                                                                                                //});
+
+
+  </script>
+}

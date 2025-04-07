@@ -1,0 +1,35 @@
+apiVersion: 1
+
+datasources:
+  - name: Loki
+    type: loki
+    access: proxy
+    jsonData:
+      maxLines: 5000
+    basicAuth: false
+    url: http://loki:3100
+    isDefault: true
+    editable: true
+
+  - name: Prometheus
+    type: prometheus
+    access: proxy
+    orgId: 1
+    url: http://prometheus:9090
+    basicAuth: false
+    isDefault: false
+    editable: true
+
+  - name: InfluxDB
+    type: influxdb
+    access: proxy
+    url: http://at-influxdb:8086
+    jsonData:
+      version: Flux
+      organization: i-soft
+      defaultBucket: request
+      tlsSkipVerify: true
+    secureJsonData:
+      token: lJe_Z4CwB3W70uPPGfYbc17gsZg5HvEBC9JjiA6lmpMcu4ezV87Ccoh2zY5hLWMF_aZ_RvdSPOItkdk2VNlVww==
+    isDefault: false
+    editable: true

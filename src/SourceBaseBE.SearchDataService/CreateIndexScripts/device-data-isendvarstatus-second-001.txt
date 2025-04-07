@@ -1,0 +1,186 @@
+﻿{
+    "version": 1,
+    "priority": 50,
+    "template": {
+        "mappings": {
+            "properties": {
+                "@timestamp": {
+                    "type": "date"
+                },
+                "connectionId": {
+                    "type": "keyword",
+                    "index": true,
+                    "index_options": "docs",
+                    "eager_global_ordinals": false,
+                    "norms": false,
+                    "split_queries_on_whitespace": false,
+                    "doc_values": true,
+                    "store": false
+                },
+                "messageId": {
+                    "type": "keyword"
+                },
+                "executeAt": {
+                    "type": "date"
+                },
+                "ADS_Local_iSendVarStatus_0_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarStatus_1_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarStatus_2_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarStatus_3_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarStatus_4_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarStatus_5_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarStatus_6_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarStatus_7_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarStatus_8_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarStatus_9_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarStatus_10_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarStatus_11_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarStatus_12_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarStatus_13_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarStatus_14_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarStatus_15_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarStatus_16_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarStatus_17_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarStatus_18_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarStatus_19_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarStatus_20_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarStatus_21_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarStatus_22_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarStatus_23_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarStatus_24_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarStatus_25_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarStatus_26_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarStatus_27_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarStatus_28_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarStatus_29_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                }
+            }
+        }
+    },
+    "index_patterns": [
+        "device-data-isendvarstatus-second-001*"
+    ],
+    "data_stream": {
+        "hidden": false
+    },
+    "composed_of": []
+}

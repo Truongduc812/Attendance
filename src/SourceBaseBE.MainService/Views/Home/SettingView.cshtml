@@ -1,0 +1,140 @@
+﻿@using SourceBaseBE.MainService.Models;
+@{
+  Layout = "_Layout";
+  ViewBag.Title = "Settings Page";
+  var linkSaveSettings = ViewBag.linkSaveSettings as string;
+  var settings = ViewBag.settings as MySettingsModel;
+  //var topFolders = ViewBag.topFolders as List<string>;
+}
+
+<script>
+
+  var alertError = function (message) {
+    $('#save-failed .toast-body').html(message);
+    $('#save-failed').show(1000);
+    setTimeout(function () {
+      $('#save-failed').hide(1000);
+    }, 3000);
+  };
+
+  var alertInfo = function (message) {
+    $('#save-success .toast-body').html(message);
+    $('#save-success').show(1000);
+    setTimeout(function () {
+      $('#save-success').hide(1000);
+    }, 3000);
+  };
+
+  var linkSaveSettings = "@linkSaveSettings";
+
+  var saveSettings = function () {
+
+    var bodyData = {
+      Text: 'Text1',
+    };
+
+    fetch(linkSaveSettings, {
+      method: "POST",
+      body: JSON.stringify(bodyData),
+      headers: {
+        "Content-Type": "application/json",
+      },
+      url: linkSaveSettings,
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log("data:", data);
+        if (data['status'] == 'Success') {
+          alertInfo("Restart service success");
+        } else {
+          alertError("Restart service error, error code: " + data['code']);
+        }
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  };
+
+</script>
+
+<div class="sticky top-bar">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <a href="@ViewBag.homePageUrl">
+          <div id="logo-isoft"></div>
+        </a>
+      </div>
+      <div class="col">
+        <form class="card-content mt-5" method="get" role="form" action="/Logout">
+          <button style="position: absolute; top: 10px;right: 50px" type="submit" class="btn btn-primary" id="btnLogout">
+            Logout
+          </button>
+        </form>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="toast-container" style="position: absolute; top: 10px; right: 10px; ">
+
+  <div id="save-success" style="color: white;" class="toast align-items-center bg-primary" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="false">
+    <div class="d-flex">
+      <div class="toast-body">
+      </div>
+      <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+  </div>
+
+  <div id="save-failed" style="color: #000000;" class="toast align-items-center bg-warning" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="false">
+    <div class="d-flex">
+      <div class="toast-body">
+      </div>
+      <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+  </div>
+</div>
+
+
+<div class="wrap_setting_all">
+
+
+  <div class="wrap_setting wrap_setting_1">
+    <div class="fieldSet-legend-filemanager">FILE MANAGER</div>
+    <div class="wrap_setting wrap_setting_2">
+      @Html.Partial("~/Views/FileManager/Index.cshtml")
+    </div>
+  </div>
+
+@*   <div class="wrap_setting wrap_setting_1">
+    <div class="fieldSet-legend">SETTINGS</div>
+    <div>
+      <div class="form-group row mb-4">
+        <legend class="col-form-label col-sm-4 pt-0"></legend>
+        <div class="col-auto">
+          <div class="row">
+            <div class="col-auto">
+              <button class="btn btn-primary m-auto" onclick="saveSettings();">&nbsp;Restart&nbsp;</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> *@
+
+</div>
+
+@*<script>
+  // theme switch example for demo
+  document.getElementById('btnSwitch').addEventListener('click', () => {
+    if (document.body.classList.contains('dark')) {
+      document.body.classList.remove('dark')
+    }
+    else {
+      document.body.classList.add('dark')
+    }
+    document.getElementById('darkTheme').innerText = document.body.classList
+  })
+</script>*@
+

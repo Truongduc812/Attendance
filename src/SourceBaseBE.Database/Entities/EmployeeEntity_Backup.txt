@@ -1,0 +1,56 @@
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
+using iSoft.Database.Entities;
+using System.Runtime.CompilerServices;
+
+namespace SourceBaseBE.Database.Entities
+{
+  public class EmployeeEntity : BaseCRUDEntity
+  {
+    [Column("name")]
+    public string? Name { get; set; }
+
+    [Column("full_name")]
+    public string? FullName { get; set; }
+
+    [Column("first_name")]
+    public string? FirstName { get; set; }
+
+    [Column("middle_name")]
+    public string? MiddleName { get; set; }
+
+    [Column("last_name")]
+    public string? LastName { get; set; }
+
+    [Column("display_name")]
+    public string? DisplayName { get; set; }
+
+    [Column("email")]
+    public string? Email { get; set; }
+
+    [Column("phone_number")]
+    public string? PhoneNumber { get; set; }
+
+    [Column("gender")]
+    public int? Gender { get; set; }
+
+    [Column("address")]
+    public string? Address { get; set; }
+
+    [Column("birdday")]
+    public int? Birdday { get; set; }
+
+    [Column("avatar")]
+    public int? Avatar { get; set; }
+
+    [ForeignKey(nameof(DepartmentEntity))]
+    public long? DepartmentId { get; set; }
+    public DepartmentEntity? ItemDepartment { get; set; }
+
+    [ForeignKey(nameof(JobTitleEntity))]
+    public long? JobTitleId { get; set; }
+    public JobTitleEntity? ItemJobTitle { get; set; }
+
+    public List<TimeSheetEntity>? TimeSheets { get; set; }
+  }
+}

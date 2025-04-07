@@ -1,0 +1,28 @@
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using iSoft.Common.Enums;
+using iSoft.Database.Entities;
+using SourceBaseBE.Database.Enums;
+using SourceBaseBE.Database.Interfaces;
+
+namespace SourceBaseBE.Database.Entities
+{
+  [Table("TimeSheets")]
+  public class TimeSheetEntity : BaseCRUDEntity 
+  {
+    [Column("in_out_type")]
+    public EnumInOutTypeStatus? InOutType { get; set; }
+
+    [Column("recorded_time")]
+    public DateTime? RecordedTime { get; set; }
+
+    [Column("origin_in_out_type")]
+    public EnumInOutTypeStatus? OriginInOutType { get; set; }
+
+    [Column("origin_recorded_time")]
+    public DateTime? OriginRecordedTime { get; set; }
+
+    [ForeignKey(nameof(EmployeeEntity))]
+    public long? EmployeeId { get; set; }
+    public EmployeeEntity? ItemEmployee { get; set; }
+  }
+}

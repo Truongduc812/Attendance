@@ -1,0 +1,160 @@
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using iSoft.Common;
+using iSoft.Common.Enums;
+using iSoft.Database.Entities;
+using iSoft.Database.Extensions;
+using Newtonsoft.Json;
+using SourceBaseBE.Database.Interfaces;
+using static iSoft.Common.ConstCommon;
+
+namespace SourceBaseBE.Database.Entities
+{
+    [Table("Users")]
+    public class UserEntity : BaseCRUDEntity, IEntityUpdatedAt, IEntityUpdatedBy, IEnityCreatedAt, IEnityCreatedBy
+    {
+        [Required]
+        [FormDataTypeAttribute(EnumFormDataType.textbox, true)]
+        [StringLength(255)]
+        [DisplayName("Username")]
+        public string Username { get; set; }
+
+
+        [Required]
+        [FormDataTypeAttribute(EnumFormDataType.password, true)]
+        [StringLength(255)]
+        //[JsonIgnore]
+        [Browsable(false)]
+        [DisplayName("Password")]
+        public string Password { get; set; }
+
+
+        [Required]
+        [StringLength(31)]
+
+        public string Role { get; set; }
+
+
+        [StringLength(255)]
+        [JsonIgnore]
+        [Browsable(false)]
+        public string? License { get; set; }
+
+
+        public EnumActiveStatus? Status { get; set; } = EnumActiveStatus.Actived;
+
+
+        [NotMapped]
+        public List<long>? ISoftProjectIds { get; set; } = new List<long>();
+        [ListEntityAttribute(nameof(ISoftProjectEntity), nameof(ISoftProjectIds), "")]
+        public List<ISoftProjectEntity>? ListISoftProject { get; set; } = new();
+
+
+        [FormDataTypeAttribute(EnumFormDataType.textarea, false)]
+        [StringLength(255)]
+        public string? Address { get; set; }
+
+
+        [FormDataTypeAttribute(EnumFormDataType.textbox, false)]
+        [StringLength(255)]
+        public string? CompanyName { get; set; }
+
+
+        [FormDataTypeAttribute(EnumFormDataType.dateOnly, false, min: "1920-01-01", max: "{CURRENT}", "{CURRENT}", null)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
+        public DateTime? Birthday { get; set; }
+
+
+        [FormDataTypeAttribute(EnumFormDataType.email, false)]
+        [StringLength(255)]
+        public string? Email { get; set; }
+
+
+        [FormDataTypeAttribute(EnumFormDataType.textbox, false)]
+        [StringLength(255)]
+        public string? FirstName { get; set; }
+
+
+        [FormDataTypeAttribute(EnumFormDataType.textbox, false)]
+        [StringLength(255)]
+        public string? MiddleName { get; set; }
+
+
+        [FormDataTypeAttribute(EnumFormDataType.textbox, false)]
+        [StringLength(255)]
+        public string? LastName { get; set; }
+
+        [FormDataTypeAttribute(EnumFormDataType.select, true, (int)EnumGender.Male)]
+        public EnumGender? Gender { get; set; }
+
+
+        [FormDataTypeAttribute(EnumFormDataType.phoneNumber, false)]
+        [StringLength(31)]
+        public string? PhoneNumber { get; set; }
+
+
+        [FormDataTypeAttribute(EnumFormDataType.image, false, "120px", "120px", 1.0)]
+        [StringLength(255)]
+        public string? Avatar { get; set; }
+
+
+        [FormDataTypeAttribute(EnumFormDataType.label, false)]
+        [DataType(System.ComponentModel.DataAnnotations.DataType.DateTime)]
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd HH:mm}", ApplyFormatInEditMode = true)]
+        public DateTime? LastLogin { get; set; }
+
+
+        [FormDataTypeAttribute(EnumFormDataType.textarea, false)]
+        [MaxLength(255)]
+        [Column(TypeName = "VARCHAR(255)")]
+        public string? Description { get; set; }
+
+        [FormDataTypeAttribute(EnumFormDataType.textarea, false)]
+        [MaxLength(255)]
+        [Column("display_name", TypeName = "VARCHAR(255)")]
+        public string? Displayname { get; set; }
+
+        [ForeignKey(nameof(EmployeeEntity))]
+        [FormDataType("Employee", EnumFormDataType.select, false)]
+        public long? EmployeeId { get; set; }
+        public EmployeeEntity? ItemEmployee { get; set; }
+
+
+        [ForeignKey(nameof(AuthAccountTypeEntity))]
+        public long? AuthAccountTypeId { get; set; }
+        public AuthAccountTypeEntity? ItemAuthAccountType { get; set; }
+
+
+        [ForeignKey(nameof(AuthTokenEntity))]
+        public long? AuthTokenId { get; set; }
+        public AuthTokenEntity? ItemAuthToken { get; set; }
+
+
+        [NotMapped]
+        public List<long>? AuthGroupIds { get; set; } = new List<long>();
+        [ListEntityAttribute(nameof(AuthGroupEntity), nameof(AuthGroupIds), "")]
+        public List<AuthGroupEntity>? ListAuthGroup { get; set; } = new();
+
+
+        [NotMapped]
+        public List<long>? AuthPermissionIds { get; set; } = new List<long>();
+        [ListEntityAttribute(nameof(AuthPermissionEntity), nameof(AuthPermissionIds), "")]
+        public List<AuthPermissionEntity>? ListAuthPermission { get; set; } = new();
+        public List<WorkingDayUpdateEntity>? WorkingDayUpdateEntities { get; set; }
+        public List<TimeSheetUpdateEntity>? TimeSheetUpdateEntities { get; set; }
+        public List<TimeSheetApprovalEntity>? TimeSheetApprovalEntities { get; set; }
+        [FormDataType(EnumFormDataType.selectMulti, true)]
+        [DisplayName("Department Role")]
+        public ICollection<DepartmentAdminEntity> DepartmentAdmins { get; set; }
+        public override void SetFileURL(Dictionary<string, string> dicImagePath)
+        {
+            if (dicImagePath.ContainsKey(nameof(Avatar)))
+            {
+                this.Avatar = dicImagePath[nameof(Avatar)];
+            }
+        }
+
+    }
+}
+

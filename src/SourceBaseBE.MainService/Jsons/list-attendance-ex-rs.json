@@ -1,0 +1,190 @@
+{
+  "status": "Success",
+  "code": null,
+  "message": null,
+  "data": {
+    "totalRecord": 100,
+    "columns": [
+      {
+        "key": "id",
+        "displayName": "ID"
+      },
+      {
+        "key": "name",
+        "displayName": "Name",
+        "searchable":  true
+      },
+      {
+        "key": "code",
+        "displayName": "Employee Code",
+        "searchable": true
+      },
+      {
+        "key": "phone",
+        "displayName": "Phone Number",
+        "searchable": true
+      },
+      {
+        "key": "department",
+        "displayName": "Department",
+        "filterable":  true
+      },
+      {
+        "key": "title",
+        "displayName": "Title",
+        "searchable": true
+      },
+      {
+        "key": "status",
+        "displayName": "Status",
+        "filterable": true
+      },
+      {
+        "key": "timein",
+        "displayName": "Time-in"
+      },
+      {
+        "key": "timeout",
+        "displayName": "Time-out"
+      },
+      {
+        "key": "timedeviation",
+        "displayName": "Time Deviation"
+      }
+    ],
+    "listData": [
+      {
+        "id": 1,
+        "name": "Nguyễn Anh Tuấn",
+        "code": "NV-00001",
+        "phone": "987654321",
+        "department": "Site LT",
+        "title": "E&M Manager",
+        "status": "Outside",
+        "timein": "08:00:05",
+        "timeout": "16:57:03",
+        "timedeviation": "00:02:57"
+      },
+      {
+        "id": 2,
+        "name": "Trần Minh Hiếu",
+        "code": "NV-00002",
+        "phone": "912345678",
+        "department": "Technical",
+        "title": "Mechanical",
+        "status": "Outside",
+        "timein": "08:00:05",
+        "timeout": "15:57:03",
+        "timedeviation": "01:02:57"
+      },
+      {
+        "id": 3,
+        "name": "Lê Thị Hương",
+        "code": "NV-00003",
+        "phone": "965432187",
+        "department": "Marketing",
+        "title": "Engineer",
+        "status": "Inside",
+        "timein": "08:00:05",
+        "timeout": "--:--:--",
+        "timedeviation": "--:--:--"
+
+      },
+      {
+        "id": 4,
+        "name": "Phạm Văn Đức",
+        "code": "NV-00004",
+        "phone": "978563412",
+        "department": "Site LT",
+        "title": "Technician",
+        "status": "Unknown",
+        "timein": "--:--:--",
+        "timeout": "--:--:--",
+        "timedeviation": "--:--:--"
+
+      },
+      {
+        "id": 5,
+        "name": "Đặng Thanh Hằng",
+        "code": "NV-00005",
+        "phone": "943216789",
+        "department": "Site LT",
+        "title": "E&A Engineer",
+        "status": "Outside",
+        "timein": "08:00:05",
+        "timeout": "18:57:03",
+        "timedeviation": "01:57:02"
+
+      },
+      {
+        "id": 6,
+        "name": "Vũ Hoàng Long",
+        "code": "NV-00006",
+        "phone": "932147856",
+        "department": "Technical",
+        "title": "E&A Engineer",
+        "status": "Outside",
+        "timein": "08:00:05",
+        "timeout": "17:57:03",
+        "timedeviation": "00:57:02"
+
+      },
+      {
+        "id": 7,
+        "name": "Hoàng Hải Yến",
+        "code": "NV-00007",
+        "phone": "965432109",
+        "department": "Marketing",
+        "title": "E&A Engineer",
+        "status": "Outside",
+        "timein": "08:00:05",
+        "timeout": "20:32:03",
+        "timedeviation": "03:31:58"
+
+
+      },
+      {
+        "id": 8,
+        "name": "Đinh Quang Huy",
+        "code": "NV-00008",
+        "phone": "976543210",
+        "department": "Technical",
+        "title": "E&M Manager",
+        "status": "Inside",
+        "timein": "08:00:05",
+        "timeout": "--:--:--",
+        "timedeviation": "--:--:--"
+
+
+      },
+      {
+        "id": 9,
+        "name": "Bùi Ngọc Mai",
+        "code": "NV-00009",
+        "phone": "943210987",
+        "department": "Technical",
+        "title": "E&M Manager",
+        "status": "Inside",
+        "timein": "08:00:05",
+        "timeout": "--:--:--",
+        "timedeviation": "--:--:--"
+
+
+      },
+      {
+        "id": 10,
+        "name": "Mai Thanh Thảo",
+        "code": "NV-00011",
+        "phone": "901234567",
+        "department": "Marketing",
+        "title": "E&M Manager",
+        "status": "Outside",
+        "timein": "08:00:05",
+        "timeout": "17:00:03",
+        "timedeviation": "00:00:02"
+
+
+      }
+    ]
+  }
+}

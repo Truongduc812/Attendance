@@ -1,0 +1,49 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Excel\**" />
+    <Compile Remove="SerialGroup\**" />
+    <Compile Remove="submodules\**" />
+    <Compile Remove="subs\**" />
+    <EmbeddedResource Remove="Excel\**" />
+    <EmbeddedResource Remove="SerialGroup\**" />
+    <EmbeddedResource Remove="submodules\**" />
+    <EmbeddedResource Remove="subs\**" />
+    <None Remove="Excel\**" />
+    <None Remove="SerialGroup\**" />
+    <None Remove="submodules\**" />
+    <None Remove="subs\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Beckhoff.TwinCAT.Ads" Version="6.0.273" />
+    <PackageReference Include="Confluent.Kafka" Version="2.1.1" />
+    <PackageReference Include="IoTClient" Version="1.0.40" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="7.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="RabbitMQ.Client" Version="6.5.0" />
+    <PackageReference Include="System.IO.Ports" Version="7.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\iSoft.Common\iSoft.Common.csproj" />
+    <ProjectReference Include="..\iSoft.DBLibrary\iSoft.DBLibrary.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="EasyModbus">
+      <HintPath>..\..\libs\EasyModbus.dll</HintPath>
+    </Reference>
+    <Reference Include="McProtocol">
+      <HintPath>..\..\libs\McProtocol.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

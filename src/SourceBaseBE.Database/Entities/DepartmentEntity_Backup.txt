@@ -1,0 +1,22 @@
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using iSoft.Database.Entities;
+using SourceBaseBE.Database.Interfaces;
+
+namespace SourceBaseBE.Database.Entities
+{
+  [Table("Departments")]
+  public class DepartmentEntity : BaseCRUDEntity
+  {
+    [Column("name")]
+    public string? Name { get; set; }
+
+    [Column("description")]
+    public string? Description { get; set; }
+
+    [Column("notes")]
+    public string? Notes { get; set; }
+
+    public List<EmployeeEntity>? Employees { get; set; }
+
+  }
+}

@@ -1,0 +1,31 @@
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using iSoft.Common;
+using iSoft.Common.Enums;
+using iSoft.Database.Entities;
+using iSoft.Database.Extensions;
+using Newtonsoft.Json;
+using SourceBaseBE.Database.Interfaces;
+using iSoft.Common.Enums;
+using static iSoft.Common.ConstCommon;
+
+namespace SourceBaseBE.Database.Entities
+{
+	[Table("HolidaySchedule")]
+	public class HolidayScheduleEntity : BaseCRUDEntity, IEntityUpdatedAt, IEntityUpdatedBy, IEnityCreatedAt, IEnityCreatedBy
+	{
+		[Column("name")]
+		public string Name { get; set; }
+		[Column("start_date")]
+		public DateTime StartDate { get; set; }
+		[Column("end_date")]
+		public DateTime EndDate { get; set; }
+		[Column("description")]
+		public string? Description { get; set; }
+		[Column("notes")]
+		public string? Note { get; set; }
+		public ICollection<HolidayWorkingTypeEntity> HolidayWorkingTypes { get; set; }
+	}
+}
+

@@ -1,0 +1,236 @@
+﻿{
+  "version": 1,
+    "priority": 50,
+    "template": {
+    "mappings": {
+      "properties": {
+        "@timestamp": {
+          "type": "date"
+                },
+                "connectionId": {
+                    "type": "keyword",
+                    "index": true,
+                    "index_options": "docs",
+                    "eager_global_ordinals": false,
+                    "norms": false,
+                    "split_queries_on_whitespace": false,
+                    "doc_values": true,
+                    "store": false
+                },
+                "messageId": {
+          "type": "keyword"
+                },
+                "executeAt": {
+          "type": "date"
+                },
+                "ADS_Local_iSendVarCount_0_": {
+          "type": "long",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarCount_1_": {
+          "type": "long",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarCount_2_": {
+          "type": "long",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarCount_3_": {
+          "type": "long",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarCount_4_": {
+          "type": "long",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarCount_5_": {
+          "type": "long",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarCount_6_": {
+          "type": "long",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarCount_7_": {
+          "type": "long",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarCount_8_": {
+          "type": "long",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarCount_9_": {
+          "type": "long",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarCount_10_": {
+          "type": "long",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarCount_11_": {
+          "type": "long",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarCount_12_": {
+          "type": "long",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarCount_13_": {
+          "type": "long",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarCount_14_": {
+          "type": "long",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarCount_15_": {
+          "type": "long",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarCount_16_": {
+          "type": "long",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarCount_17_": {
+          "type": "long",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarCount_18_": {
+          "type": "long",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarCount_19_": {
+          "type": "long",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarCount_20_": {
+          "type": "long",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarCount_21_": {
+          "type": "long",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarCount_22_": {
+          "type": "long",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarCount_23_": {
+          "type": "long",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarCount_24_": {
+          "type": "long",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarCount_25_": {
+          "type": "long",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarCount_26_": {
+          "type": "long",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarCount_27_": {
+          "type": "long",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarCount_28_": {
+          "type": "long",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarCount_29_": {
+          "type": "long",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarCount_30_": {
+          "type": "long",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarCount_31_": {
+          "type": "long",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarCount_32_": {
+          "type": "long",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarCount_33_": {
+          "type": "long",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarCount_34_": {
+          "type": "long",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarCount_35_": {
+          "type": "long",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarCount_36_": {
+          "type": "long",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarCount_37_": {
+          "type": "long",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarCount_38_": {
+          "type": "long",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarCount_39_": {
+          "type": "long",
+                    "ignore_malformed": true,
+                    "coerce": true
+                }
+      }
+    }
+  },
+    "index_patterns": [
+        "device-data-isendvarcount-second-001*"
+    ],
+    "data_stream": {
+    "hidden": false
+    },
+    "composed_of": []
+}

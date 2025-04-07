@@ -1,0 +1,27 @@
+﻿{
+  "Version": "1",
+  "ApiKeys": [
+    {
+      "Name": "SourceBaseBE.X",
+      "ApiKey": "1fc37e23-7b85-459a-8000-4f6fbe8556e8",
+      "JsonFilePath": "wwwroot/Jsons/SourceBaseBE.json",
+      "AccessLimits": [
+        {
+          "LimitType": 1,
+          "MaxValue": 1000
+        }
+      ]
+    },
+    {
+      "Name": "Partner-1",
+      "ApiKey": "79625925-f99b-47eb-bd7c-d32ec59eaa84",
+      "JsonFilePath": "",
+      "AccessLimits": [
+        {
+          "LimitType": 1,
+          "MaxValue": 1000
+        }
+      ]
+    }
+  ]
+}

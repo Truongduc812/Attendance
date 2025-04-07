@@ -1,0 +1,9 @@
+﻿@{
+  var message = TempData["message"] as string;
+}
+@if (!string.IsNullOrEmpty(message))
+{
+  <p>
+    @message
+  </p>
+}

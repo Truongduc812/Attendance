@@ -1,0 +1,11 @@
+﻿{
+	"Version": "1",
+	"SyncDataConfig": {
+		"Version": "4",
+		"ActiveFlag": false,
+		"IntervalInMiliseconds": 1500,
+		"StepTimeInSeconds": 600,
+		"StartTime": "2023-12-11 11:00:00.000",
+		"EndTime": "2023-12-11 11:59:59.999"
+	}
+}

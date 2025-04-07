@@ -1,0 +1,56 @@
+﻿{
+    "version": 1,
+    "priority": 50,
+    "template": {
+        "mappings": {
+            "properties": {
+                "@timestamp": {
+                    "type": "date"
+                },
+                "connectionId": {
+                    "type": "keyword",
+                    "index": true,
+                    "index_options": "docs",
+                    "eager_global_ordinals": false,
+                    "norms": false,
+                    "split_queries_on_whitespace": false,
+                    "doc_values": true,
+                    "store": false
+                },
+                "messageId": {
+                    "type": "keyword"
+                },
+                "executeAt": {
+                    "type": "date"
+                },
+                "ADS_Local__current_OR_value": {
+                    "type": "double",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local__current_OLE_value": {
+                    "type": "double",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_Setting_UCValue": {
+                    "type": "double",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_Setting_UAValue": {
+                    "type": "double",
+                    "ignore_malformed": true,
+                    "coerce": true
+                }
+            }
+        }
+    },
+    "index_patterns": [
+        "device-data-thirdparty-second-001*"
+    ],
+    "data_stream": {
+        "hidden": false
+    },
+    "composed_of": []
+}

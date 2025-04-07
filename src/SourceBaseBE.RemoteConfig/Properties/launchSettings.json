@@ -1,0 +1,22 @@
+{
+  "profiles": {
+    "iSoft.RemoteConfig": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "launchUrl": "http://localhost:2000",
+      "applicationUrl": "https://localhost:2010;http://localhost:2000"
+    },
+    "Docker": {
+      "commandName": "Docker",
+      "launchBrowser": true,
+      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}",
+      "publishAllPorts": true,
+      "useSSL": true,
+      "httpPort": 2000,
+      "sslPort": 2010
+    }
+  }
+}

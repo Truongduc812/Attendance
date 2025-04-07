@@ -1,0 +1,5 @@
+CREATE TABLE testTable(
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(500) NOT NULL,
+    isCompleted BOOLEAN NOT NULL
+);

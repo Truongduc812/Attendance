@@ -1,0 +1,51 @@
+{
+    "$schema": "http://json.schemastore.org/template",
+    "author": "buivansy",
+    "classifications": ["Web", "API", "Microservices", "Backend"],
+    "name": ".NET 7 A template for backend api",
+    "identity": "isoft_be_api_template",
+    "shortName": "isoft_be_api",
+    "tags": {
+      "language": "C#",
+      "type": "project"
+    },
+    "sources": [
+      {
+        "modifiers": [
+          {
+            "exclude": [
+              ".vs/**",
+              ".git/**",
+              "README.md",
+              "bin/**",
+              "obj/**"
+            ]
+          }
+        ]
+      }
+    ],
+    "sourceName": "SourceBaseBE",
+    "preferNameDirectory": true,
+    "symbols": {
+      "author": {
+        "type": "parameter",
+        "defaultValue": "buivansy",
+        "replaces": "__PROJECT_AUTHOR__"
+      },
+      "description": {
+        "type": "parameter",
+        "defaultValue": ".NET 7 A template for backend api",
+        "replaces": "__PROJECT_DESCRIPTION__"
+      },
+      "namespace": {
+        "type": "parameter",
+        "defaultValue": "SourceBaseBE",
+        "replaces": "SourceBaseBE"
+      },
+      "version": {
+        "type": "parameter",
+        "defaultValue": "1.0.0",
+        "replaces": "99.99.99"
+      }
+    }
+  }

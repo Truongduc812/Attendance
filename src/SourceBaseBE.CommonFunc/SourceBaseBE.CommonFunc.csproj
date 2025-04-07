@@ -1,0 +1,42 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="setting\mapping.xlsx" />
+    <None Remove="TemplateReport\templatePendingRequest.xlsx" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="setting\mapping.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TemplateReport\templatePendingRequest.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\subs\iSoft.Core\iSoft.ElasticSearch\iSoft.ElasticSearch.csproj" />
+    <ProjectReference Include="..\..\subs\iSoft.Core\iSoft.ExcelHelper\iSoft.ExcelHepler\iSoft.ExcelHepler.csproj" />
+    <ProjectReference Include="..\..\subs\iSoft.Core\iSoft.RabbitMQ\iSoft.RabbitMQ.csproj" />
+    <ProjectReference Include="..\..\subs\iSoft.Core\iSoft.Redis\iSoft.Redis.csproj" />
+    <ProjectReference Include="..\..\subs\iSoft.Core\iSoft.SocketIOClient\iSoft.SocketIOClient.csproj" />
+    <ProjectReference Include="..\SourceBaseBE.Database\SourceBaseBE.Database.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Utils\" />
+  </ItemGroup>
+
+</Project>

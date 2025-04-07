@@ -1,0 +1,532 @@
+version: "3"
+
+networks:
+  at-net:
+
+volumes:
+  at-logs:
+  at-esdata:
+  at-kibana:
+  at-redis-data:
+  at-main-wwwroot21																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																					:
+  at-postgres:
+  at-rabbitmq2:
+  at-influxdb2:
+services:
+  at-fe:
+    image: at-fe:staging
+    container_name: at-fe
+    # restart: always
+    ports:
+      - 3002:2800
+    environment:
+      - TZ=Asia/Ho_Chi_Minh
+      - REACT_APP_SERVER_AUTH_URL=http://at-auth:80/api/v1
+      - REACT_APP_SERVER_MAIN_SERVICE_URL=http://at-main:80/api/v1
+      - REACT_APP_SERVER_SOCKET_IO_SERVER_URL=http://at-socket:2807
+      - REACT_APP_SERVER_IMAGE_URL=http://at-main:80
+    volumes:
+      - /etc/at-certs:/app/certs
+    networks:
+      - at-net
+  at-postgres:
+    image: postgres:16.2
+    container_name: at-postgres
+    restart: always
+    # build:
+    #   context: ./database-postgres
+    #   dockerfile: Dockerfile
+    ports:
+      - 2801:5432
+    environment:
+      - TZ=Asia/Ho_Chi_Minh
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=8wEzA1TMKby9eQsWXBaupj52
+      - POSTGRES_DB=at_master
+      - PGDATA=/var/lib/at-postgres
+    volumes:
+      - "at-postgres:/var/lib/at-postgres"
+    networks:
+      - at-net
+    labels:
+      org.label-schema.group: "monitoring"
+
+  at-rabbitmq:
+    image: rabbitmq:3-management-alpine
+    container_name: at-rabbitmq
+    hostname: "sbrabbitmq"
+    restart: always
+    ports:
+      - 2805:15672
+      - 2806:5672
+    environment:
+      - TZ=Asia/Ho_Chi_Minh
+      - RABBITMQ_DEFAULT_USER=admin
+      - RABBITMQ_DEFAULT_PASS=rDpOP7Wm23fuj5IQT8hiwLZJ
+    volumes:
+      - "at-rabbitmq2:/var/lib/rabbitmq/"
+    networks:
+      - at-net
+    labels:
+      org.label-schema.group: "monitoring"
+
+  at-auth:
+    image: at-auth:staging
+    environment:
+      - TZ=Asia/Ho_Chi_Minh
+
+      - ENV=${ENV}
+
+      - Version=${Version}
+      - TIME_EXPIRED=${TIME_EXPIRED}
+      - AuthenticationSecret=${AuthenticationSecret}
+
+      - MasterDatabaseConfig_DatabaseType=${MasterDatabaseConfig_DatabaseType}
+      - MasterDatabaseConfig_Address=${MasterDatabaseConfig_Address}
+      - MasterDatabaseConfig_Port=${MasterDatabaseConfig_Port}
+      - MasterDatabaseConfig_DatabaseName=${MasterDatabaseConfig_DatabaseName}
+      - MasterDatabaseConfig_Username=${MasterDatabaseConfig_Username}
+      - MasterDatabaseConfig_Password=${MasterDatabaseConfig_Password}
+
+      - RabbitMQConfig_Address=${RabbitMQConfig_Address}
+      - RabbitMQConfig_Port=${RabbitMQConfig_Port}
+      - RabbitMQConfig_Username=${RabbitMQConfig_Username}
+      - RabbitMQConfig_Password=${RabbitMQConfig_Password}
+
+      - ElasticSearchConfig_Address=${ElasticSearchConfig_Address}
+      - ElasticSearchConfig_Port=${ElasticSearchConfig_Port}
+      - ElasticSearchConfig_Username=${ElasticSearchConfig_Username}
+      - ElasticSearchConfig_Password=${ElasticSearchConfig_Password}
+
+      - RedisConfig_Address=${RedisConfig_Address}
+      - RedisConfig_Port=${RedisConfig_Port}
+      - RedisConfig_Username=${RedisConfig_Username}
+      - RedisConfig_Password=${RedisConfig_Password}
+
+      - SocketIOConfig_Address=${SocketIOConfig_Address}
+      - SocketIOConfig_Port=${SocketIOConfig_Port}
+
+      - RemoteConfig_Address=${RemoteConfig_Address}
+      - RemoteConfig_Port=${RemoteConfig_Port}
+      - RemoteConfig_APIKey=${RemoteConfig_APIKey}
+
+    container_name: at-auth
+    restart: always
+    # build:
+    #   context: ./../
+    #   dockerfile: src/SourceBaseBE.AuthenticationService/Dockerfile
+    networks:
+      - at-net 
+    labels:
+      org.label-schema.group: "monitoring"
+    ports:
+      - 2802:80
+      - 2852:443
+    # depends_on:
+    #   - isoft-remote-config-service
+
+  at-main:
+    image: at-main:staging
+    environment:
+      - TZ=Asia/Ho_Chi_Minh
+
+      - ENV=${ENV}
+
+      - Version=${Version}
+
+      - AuthenticationSecret=${AuthenticationSecret}
+
+      - MasterDatabaseConfig_DatabaseType=${MasterDatabaseConfig_DatabaseType}
+      - MasterDatabaseConfig_Address=${MasterDatabaseConfig_Address}
+      - MasterDatabaseConfig_Port=${MasterDatabaseConfig_Port}
+      - MasterDatabaseConfig_DatabaseName=${MasterDatabaseConfig_DatabaseName}
+      - MasterDatabaseConfig_Username=${MasterDatabaseConfig_Username}
+      - MasterDatabaseConfig_Password=${MasterDatabaseConfig_Password}
+
+      - TraceDatabaseConfig_DatabaseType=${TraceDatabaseConfig_DatabaseType}
+      - TraceDatabaseConfig_Address=${TraceDatabaseConfig_Address}
+      - TraceDatabaseConfig_Port=${TraceDatabaseConfig_Port}
+      - TraceDatabaseConfig_DatabaseName=${TraceDatabaseConfig_DatabaseName}
+      - TraceDatabaseConfig_Username=${TraceDatabaseConfig_Username}
+      - TraceDatabaseConfig_Password=${TraceDatabaseConfig_Password}
+
+      - RabbitMQConfig_Address=${RabbitMQConfig_Address}
+      - RabbitMQConfig_Port=${RabbitMQConfig_Port}
+      - RabbitMQConfig_Username=${RabbitMQConfig_Username}
+      - RabbitMQConfig_Password=${RabbitMQConfig_Password}
+
+      - ElasticSearchConfig_Address=${ElasticSearchConfig_Address}
+      - ElasticSearchConfig_Port=${ElasticSearchConfig_Port}
+      - ElasticSearchConfig_Username=${ElasticSearchConfig_Username}
+      - ElasticSearchConfig_Password=${ElasticSearchConfig_Password}
+
+      - RedisConfig_Address=${RedisConfig_Address}
+      - RedisConfig_Port=${RedisConfig_Port}
+      - RedisConfig_Username=${RedisConfig_Username}
+      - RedisConfig_Password=${RedisConfig_Password}
+
+      - SocketIOConfig_Address=${SocketIOConfig_Address}
+      - SocketIOConfig_Port=${SocketIOConfig_Port}
+
+      - RemoteConfig_Address=${RemoteConfig_Address}
+      - RemoteConfig_Port=${RemoteConfig_Port}
+      - RemoteConfig_APIKey=${RemoteConfig_APIKey}
+      
+      - InfluxDBConfig_Address=${InfluxDBConfig_Address}
+      - InfluxDBConfig_Port=${InfluxDBConfig_Port}
+      - InfluxDBConfig_Username=${InfluxDBConfig_Username}
+      - InfluxDBConfig_Password=${InfluxDBConfig_Password}
+      - InfluxDBConfig_Token=${InfluxDBConfig_Token}
+      - InfluxDBConfig_Organization=${InfluxDBConfig_Organization}
+      - InfluxDBConfig_DatabaseName=${InfluxDBConfig_DatabaseName}
+      - AttendanceTrackAPI=${AttendanceTrackAPI}
+      - SerialNumberFaceIn=${SerialNumberFaceIn}
+      - SerialNumberFaceOut=${SerialNumberFaceOut}
+      - AttendanceTrackAPI_RangeDate=${AttendanceTrackAPI_RangeDate}     
+      - WorkingTypeSheetName=${WorkingTypeSheetName}
+      - HolidaySheetName=${HolidaySheetName}
+      - EmployeeSheetName=${EmployeeSheetName}
+      - AdminSheetName=${AdminSheetName}
+      - WorkingDayDayOff=${WorkingDayDayOff}
+
+
+    container_name: at-main
+    restart: always
+    # build:
+    #   context: ./../
+    #   dockerfile: src/SourceBaseBE.MainService/Dockerfile
+    networks:
+      - at-net 
+    labels:
+      org.label-schema.group: "monitoring"
+    ports:
+      - 2803:80
+      - 2853:443
+    volumes:
+      - "at-main-wwwroot21:/app/wwwroot"
+
+  # at-firebase:
+  #   image: at-firebase:staging
+  #   environment:
+  #     - TZ=Asia/Ho_Chi_Minh
+
+      # - FCMConfig_Server_ServerKey=${FCMConfig_Server_ServerKey}
+      # - FCMConfig_Server_MessagingSenderId=${FCMConfig_Server_MessagingSenderId}
+      # - FCMConfig_Server_DefaultIcon=${FCMConfig_Server_DefaultIcon}
+      # - FCMConfig_Server_DefaultVibrate=${FCMConfig_Server_DefaultVibrate}
+      # - FCMConfig_Client_ApiKey=${FCMConfig_Client_ApiKey}
+      # - FCMConfig_Client_AuthDomain=${FCMConfig_Client_AuthDomain}
+      # - FCMConfig_Client_ProjectId=${FCMConfig_Client_ProjectId}
+      # - FCMConfig_Client_StorageBucket=${FCMConfig_Client_StorageBucket}
+      # - FCMConfig_Client_MessagingSenderId=${FCMConfig_Client_MessagingSenderId}
+      # - FCMConfig_Client_AppId=${FCMConfig_Client_AppId}
+  #   container_name: at-firebase
+  #   restart: always
+  #   build:
+  #     context: ./../
+  #     dockerfile: subs/iSoft.Core/iSoft.FirebaseService/Dockerfile
+  #   networks:
+  #     - at-net
+  #   labels:
+  #     org.label-schema.group: "monitoring"
+  #   ports:
+  #     - 2004:80
+  #     - 2014:443
+  #   volumes:
+  #     - "at-main_service_wwwroot:/app/wwwroot"
+
+  at-redis:
+    image: redis:7.2
+    container_name: at-redis
+    restart: always
+    environment:
+      - TZ=Asia/Ho_Chi_Minh
+      # - REDIS_HOST=cache
+      # - REDIS_PORT=6379
+      # - REDIS_PASSWORD=AdBV1c2SgWtr6TwhJMQoGvxq
+    ports:
+      - 2804:6379
+    volumes:
+      - "at-redis-data:/data"
+    networks:
+      - at-net
+    labels:
+      org.label-schema.group: "monitoring"
+      
+  # at-elasticsearch:
+  #   image: docker.elastic.co/elasticsearch/elasticsearch:7.17.5
+  #   container_name: at-elasticsearch
+  #   restart: always
+  #   environment:
+  #     - TZ=Asia/Ho_Chi_Minh
+  #     - bootstrap.memory_lock=true
+  #     - discovery.type=single-node
+  #     - cluster.name=at-elasticsearch
+  #     - "ES_JAVA_OPTS=-Xms2g -Xmx2g"
+  #     - cluster.routing.allocation.disk.threshold_enabled=false
+  #     - ELASTIC_PASSWORD=MhjyCxF5LJcqbok60K1pOg8A
+  #     - xpack.security.enabled=true
+  #   # ulimits:
+  #   #   memlock:
+  #   #     soft: -1
+  #   #     hard: -1
+  #   ports:
+  #     - 2808:9200
+  #     - 2809:9300
+  #   volumes:
+  #     - "at-esdata:/usr/share/elasticsearch/data"
+  #   networks:
+  #     - at-net
+  #   labels:
+  #     org.label-schema.group: "monitoring"
+
+  # at-kibana:
+  #   image: docker.elastic.co/kibana/kibana:7.17.5
+  #   container_name: at-kibana
+  #   restart: always
+  #   environment:
+  #     - ELASTICSEARCH_HOSTS=http://at-elasticsearch:9200
+  #     - TZ=Asia/Ho_Chi_Minh
+  #     - ELASTICSEARCH_USERNAME=elastic
+  #     - ELASTICSEARCH_PASSWORD=MhjyCxF5LJcqbok60K1pOg8A
+  #   ports:
+  #     - 2810:5601
+  #   links: ['at-elasticsearch']
+  #   depends_on: ['at-elasticsearch']
+  #   # volumes:
+  #   #   - "at-kibana:/usr/share/elasticsearch/data"
+  #   networks:
+  #     - at-net
+  #   labels:
+  #     org.label-schema.group: "monitoring"
+
+  # at-virtual:
+  #   image: at-virtual:staging
+  #   environment:
+  #     - TZ=Asia/Ho_Chi_Minh
+
+  #     - ENV=${ENV}
+
+  #     - Version=${Version}
+
+  #     - MasterDatabaseConfig_DatabaseType=${MasterDatabaseConfig_DatabaseType}
+  #     - MasterDatabaseConfig_Address=${MasterDatabaseConfig_Address}
+  #     - MasterDatabaseConfig_Port=${MasterDatabaseConfig_Port}
+  #     - MasterDatabaseConfig_DatabaseName=${MasterDatabaseConfig_DatabaseName}
+  #     - MasterDatabaseConfig_Username=${MasterDatabaseConfig_Username}
+  #     - MasterDatabaseConfig_Password=${MasterDatabaseConfig_Password}
+
+  #     - RabbitMQConfig_Address=${RabbitMQConfig_Address}
+  #     - RabbitMQConfig_Port=${RabbitMQConfig_Port}
+  #     - RabbitMQConfig_Username=${RabbitMQConfig_Username}
+  #     - RabbitMQConfig_Password=${RabbitMQConfig_Password}
+
+  #     - ElasticSearchConfig_Address=${ElasticSearchConfig_Address}
+  #     - ElasticSearchConfig_Port=${ElasticSearchConfig_Port}
+  #     - ElasticSearchConfig_Username=${ElasticSearchConfig_Username}
+  #     - ElasticSearchConfig_Password=${ElasticSearchConfig_Password}
+
+  #     - RedisConfig_Address=${RedisConfig_Address}
+  #     - RedisConfig_Port=${RedisConfig_Port}
+  #     - RedisConfig_Username=${RedisConfig_Username}
+  #     - RedisConfig_Password=${RedisConfig_Password}
+
+  #     - SocketIOConfig_Address=${SocketIOConfig_Address}
+  #     - SocketIOConfig_Port=${SocketIOConfig_Port}
+
+  #     - RemoteConfig_Address=${RemoteConfig_Address}
+  #     - RemoteConfig_Port=${RemoteConfig_Port}
+  #     - RemoteConfig_APIKey=${RemoteConfig_APIKey}
+      
+  #     - InfluxDBConfig_Address=${InfluxDBConfig_Address}
+  #     - InfluxDBConfig_Port=${InfluxDBConfig_Port}
+  #     - InfluxDBConfig_Username=${InfluxDBConfig_Username}
+  #     - InfluxDBConfig_Password=${InfluxDBConfig_Password}
+  #     - InfluxDBConfig_Token=${InfluxDBConfig_Token}
+  #     - InfluxDBConfig_Organization=${InfluxDBConfig_Organization}
+  #     - InfluxDBConfig_DatabaseName=${InfluxDBConfig_DatabaseName}
+
+  #   container_name: at-virtual
+  #   restart: always
+  #   build:
+  #     context: ./../
+  #     dockerfile: src/SourceBaseBE.VirtualDeviceService/Dockerfile
+  #   networks:
+  #     - at-net
+  #   labels:
+  #     org.label-schema.group: "monitoring"
+  #   # ports:
+  #   #   - 2100:80
+  #   #   - 2101:443
+  #   # depends_on:
+  #   #   - isoft-remote-config-service
+
+  # at-tracedata:
+  #   image: at-tracedata:staging
+  #   environment:
+  #     - TZ=Asia/Ho_Chi_Minh
+
+  #     - ENV=${ENV}
+
+  #     - Version=${Version}
+
+  #     - MasterDatabaseConfig_DatabaseType=${MasterDatabaseConfig_DatabaseType}
+  #     - MasterDatabaseConfig_Address=${MasterDatabaseConfig_Address}
+  #     - MasterDatabaseConfig_Port=${MasterDatabaseConfig_Port}
+  #     - MasterDatabaseConfig_DatabaseName=${MasterDatabaseConfig_DatabaseName}
+  #     - MasterDatabaseConfig_Username=${MasterDatabaseConfig_Username}
+  #     - MasterDatabaseConfig_Password=${MasterDatabaseConfig_Password}
+
+  #     - TraceDatabaseConfig_DatabaseType=${TraceDatabaseConfig_DatabaseType}
+  #     - TraceDatabaseConfig_Address=${TraceDatabaseConfig_Address}
+  #     - TraceDatabaseConfig_Port=${TraceDatabaseConfig_Port}
+  #     - TraceDatabaseConfig_DatabaseName=${TraceDatabaseConfig_DatabaseName}
+  #     - TraceDatabaseConfig_Username=${TraceDatabaseConfig_Username}
+  #     - TraceDatabaseConfig_Password=${TraceDatabaseConfig_Password}
+
+  #     - RabbitMQConfig_Address=${RabbitMQConfig_Address}
+  #     - RabbitMQConfig_Port=${RabbitMQConfig_Port}
+  #     - RabbitMQConfig_Username=${RabbitMQConfig_Username}
+  #     - RabbitMQConfig_Password=${RabbitMQConfig_Password}
+
+  #     - RedisConfig_Address=${RedisConfig_Address}
+  #     - RedisConfig_Port=${RedisConfig_Port}
+  #     - RedisConfig_Username=${RedisConfig_Username}
+  #     - RedisConfig_Password=${RedisConfig_Password}
+
+  #     - SocketIOConfig_Address=${SocketIOConfig_Address}
+  #     - SocketIOConfig_Port=${SocketIOConfig_Port}
+
+  #     - RemoteConfig_Address=${RemoteConfig_Address}
+  #     - RemoteConfig_Port=${RemoteConfig_Port}
+  #     - RemoteConfig_APIKey=${RemoteConfig_APIKey}
+      
+  #     - InfluxDBConfig_Address=${InfluxDBConfig_Address}
+  #     - InfluxDBConfig_Port=${InfluxDBConfig_Port}
+  #     - InfluxDBConfig_Username=${InfluxDBConfig_Username}
+  #     - InfluxDBConfig_Password=${InfluxDBConfig_Password}
+  #     - InfluxDBConfig_Token=${InfluxDBConfig_Token}
+  #     - InfluxDBConfig_Organization=${InfluxDBConfig_Organization}
+  #     - InfluxDBConfig_DatabaseName=${InfluxDBConfig_DatabaseName}
+
+  #   container_name: at-tracedata
+  #   restart: always
+  #   build:
+  #     context: ./../
+  #     dockerfile: src/SourceBaseBE.TraceDataService/Dockerfile
+  #   networks:
+  #     - at-net
+  #   labels:
+  #     org.label-schema.group: "monitoring"
+  #   # ports:
+  #   #   - 2200:80
+  #   #   - 2201:443
+  #   # depends_on:
+  #   #   - isoft-remote-config-service
+  #   # volumes:
+  #   #   - "./docker_data/settings:/var/settings"
+
+  # at-searchdata:
+  #   image: at-searchdata:staging
+  #   environment:
+  #     - TZ=Asia/Ho_Chi_Minh
+
+  #     - ENV=${ENV}
+
+  #     - Version=${Version}
+
+  #     - MasterDatabaseConfig_DatabaseType=${MasterDatabaseConfig_DatabaseType}
+  #     - MasterDatabaseConfig_Address=${MasterDatabaseConfig_Address}
+  #     - MasterDatabaseConfig_Port=${MasterDatabaseConfig_Port}
+  #     - MasterDatabaseConfig_DatabaseName=${MasterDatabaseConfig_DatabaseName}
+  #     - MasterDatabaseConfig_Username=${MasterDatabaseConfig_Username}
+  #     - MasterDatabaseConfig_Password=${MasterDatabaseConfig_Password}
+
+  #     - RabbitMQConfig_Address=${RabbitMQConfig_Address}
+  #     - RabbitMQConfig_Port=${RabbitMQConfig_Port}
+  #     - RabbitMQConfig_Username=${RabbitMQConfig_Username}
+  #     - RabbitMQConfig_Password=${RabbitMQConfig_Password}
+
+  #     - ElasticSearchConfig_Address=${ElasticSearchConfig_Address}
+  #     - ElasticSearchConfig_Port=${ElasticSearchConfig_Port}
+  #     - ElasticSearchConfig_Username=${ElasticSearchConfig_Username}
+  #     - ElasticSearchConfig_Password=${ElasticSearchConfig_Password}
+
+  #     - RedisConfig_Address=${RedisConfig_Address}
+  #     - RedisConfig_Port=${RedisConfig_Port}
+  #     - RedisConfig_Username=${RedisConfig_Username}
+  #     - RedisConfig_Password=${RedisConfig_Password}
+
+  #     - SocketIOConfig_Address=${SocketIOConfig_Address}
+  #     - SocketIOConfig_Port=${SocketIOConfig_Port}
+
+  #     - RemoteConfig_Address=${RemoteConfig_Address}
+  #     - RemoteConfig_Port=${RemoteConfig_Port}
+  #     - RemoteConfig_APIKey=${RemoteConfig_APIKey}
+      
+  #     - InfluxDBConfig_Address=${InfluxDBConfig_Address}
+  #     - InfluxDBConfig_Port=${InfluxDBConfig_Port}
+  #     - InfluxDBConfig_Username=${InfluxDBConfig_Username}
+  #     - InfluxDBConfig_Password=${InfluxDBConfig_Password}
+  #     - InfluxDBConfig_Token=${InfluxDBConfig_Token}
+  #     - InfluxDBConfig_Organization=${InfluxDBConfig_Organization}
+  #     - InfluxDBConfig_DatabaseName=${InfluxDBConfig_DatabaseName}
+
+  #   container_name: at-searchdata
+  #   restart: always
+  #   build:
+  #     context: ./../
+  #     dockerfile: src/SourceBaseBE.SearchDataService/Dockerfile
+  #   networks:
+  #     - at-net
+  #   labels:
+  #     org.label-schema.group: "monitoring"
+  #   # ports:
+  #   #   - 2400:80
+  #   #   - 2401:443
+  #   # depends_on:
+  #   #   - isoft-remote-config-service
+  #   #   - elasticsearch
+  #   # volumes:
+  #   #   - "./docker_data/settings:/var/settings"
+
+  at-socket:
+    image: at-socket:staging
+    environment:
+      - TZ=Asia/Ho_Chi_Minh
+
+      - RABBIT_URL=${RABBIT_URL}
+      - SOCKET_ROOM=${SOCKET_ROOM}
+      - SOCKET_EVENT=${SOCKET_EVENT}
+      - RABBIT_CONSUME_QUEUE=${RABBIT_CONSUME_QUEUE}
+      - CHECK_RABBIT_CONN_INTERVAL=${CHECK_RABBIT_CONN_INTERVAL}
+      - HOST_PORT=${HOST_PORT}
+
+    container_name: at-socket
+    restart: always
+    # build:
+    #   context: ./../
+    #   dockerfile: src/SourceBaseBE.SocketIOServer/Dockerfile
+    networks:
+      - at-net
+    labels:
+      org.label-schema.group: "monitoring"
+    ports:
+      - 2807:2807
+
+  at-influxdb:
+    image: influxdb:2.7-alpine
+    container_name: at-influxdb
+    restart: always
+    ports:
+      - 2811:8086
+    volumes:
+      - at-influxdb2:/var/lib/influxdb2
+    environment:
+      - INFLUXDB_DB=request
+      - INFLUXDB_ADMIN_USER=admin
+      - INFLUXDB_ADMIN_PASSWORD=fNW9J30LdC28pg14MvelczEI
+    networks:
+      - at-net
+    labels:
+      org.label-schema.group: "monitoring"

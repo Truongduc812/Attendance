@@ -1,0 +1,586 @@
+﻿{
+    "version": 1,
+    "priority": 50,
+    "template": {
+        "mappings": {
+            "properties": {
+                "@timestamp": {
+                    "type": "date"
+                },
+                "connectionId": {
+                    "type": "keyword",
+                    "index": true,
+                    "index_options": "docs",
+                    "eager_global_ordinals": false,
+                    "norms": false,
+                    "split_queries_on_whitespace": false,
+                    "doc_values": true,
+                    "store": false
+                },
+                "messageId": {
+                    "type": "keyword"
+                },
+                "executeAt": {
+                    "type": "date"
+                },
+                "ADS_Local_iSendVarPoint_SEM_0_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SEM_1_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SEM_2_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SEM_3_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SEM_4_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SEM_5_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SEM_6_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SEM_7_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SEM_8_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SEM_9_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SEM_10_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SEM_11_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SEM_12_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SEM_13_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SEM_14_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SEM_15_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SEM_16_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SEM_17_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SEM_18_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SEM_19_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SEM_20_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SEM_21_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SEM_22_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SEM_23_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SEM_24_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SEM_25_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SEM_26_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SEM_27_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SEM_28_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SEM_29_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SEM_30_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SEM_31_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SEM_32_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SEM_33_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SEM_34_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SEM_35_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SEM_36_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SEM_37_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SEM_38_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SEM_39_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SEM_40_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SEM_41_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SEM_42_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SEM_43_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SEM_44_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SEM_45_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SEM_46_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SEM_47_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SEM_48_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SEM_49_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SIL_0_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SIL_1_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SIL_2_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SIL_3_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SIL_4_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SIL_5_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SIL_6_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SIL_7_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SIL_8_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SIL_9_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SIL_10_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SIL_11_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SIL_12_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SIL_13_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SIL_14_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SIL_15_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SIL_16_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SIL_17_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SIL_18_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SIL_19_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SIL_20_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SIL_21_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SIL_22_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SIL_23_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SIL_24_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SIL_25_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SIL_26_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SIL_27_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SIL_28_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SIL_29_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SIL_30_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SIL_31_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SIL_32_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SIL_33_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SIL_34_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SIL_35_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SIL_36_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SIL_37_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SIL_38_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SIL_39_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SIL_40_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SIL_41_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SIL_42_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SIL_43_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SIL_44_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SIL_45_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SIL_46_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SIL_47_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SIL_48_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SIL_49_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SIL_50_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SIL_51_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SIL_52_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SIL_53_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SIL_54_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SIL_55_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SIL_56_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SIL_57_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SIL_58_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarPoint_SIL_59_": {
+                    "type": "short",
+                    "ignore_malformed": true,
+                    "coerce": true
+                }
+            }
+        }
+    },
+    "index_patterns": [
+        "device-data-isendvarsafetypoint-second-001*"
+    ],
+    "data_stream": {
+        "hidden": false
+    },
+    "composed_of": []
+}

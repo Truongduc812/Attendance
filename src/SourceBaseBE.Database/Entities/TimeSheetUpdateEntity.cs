@@ -1,0 +1,40 @@
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using iSoft.Common.Enums;
+using iSoft.Database.Entities;
+using SourceBaseBE.Database.Interfaces;
+
+namespace SourceBaseBE.Database.Entities
+{
+    [Table("TimeSheetUpdates")]
+    public class TimeSheetUpdateEntity : BaseCRUDEntity
+    {
+        [Column("status")]
+        public EnumFaceId? Status { get; set; }
+
+        [Column("recorded_time")]
+        public DateTime? RecordedTime { get; set; }
+        [Column("origin_status")]
+        public EnumFaceId? OriginStatus { get; set; }
+
+        [Column("origin_recorded_time")]
+        public DateTime? OriginRecordedTime { get; set; }
+
+        [Column("update_reason")]
+        public string? UpdateReason { get; set; }
+
+        [Column("notes")]
+        public string? Notes { get; set; }
+        public EnumActionRequest? ActionRequest { get; set; }
+
+        [ForeignKey(nameof(TimeSheetEntity))]
+        public long? TimeSheetEntityId { get; set; }
+        public TimeSheetEntity? TimeSheetEntity { get; set; }
+        [ForeignKey(nameof(EmployeeEntity))]
+        public long? EmployeeId { get; set; }
+        public EmployeeEntity? Employee { get; set; }
+        [ForeignKey(nameof(UserEntity))]
+        public long? UserEntityId { get; set; }
+        public UserEntity? UserEntity { get; set; }
+        public  List<TimeSheetApprovalEntity> TimeSheetApprovalEntities { get; set; }
+    }
+}

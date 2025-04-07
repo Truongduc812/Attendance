@@ -1,0 +1,66 @@
+﻿@{
+  Layout = "_Layout";
+  ViewBag.Title = "Login Page";
+}
+
+<div class="wrap_login">
+  <div class="logo">
+    <div id="logo-isoft"></div>
+  </div>
+  <div class="container text-center" style="height:100% ;color:black">
+
+    <nav class="rounded row my-40 h-100">
+      <!-- Icon Isoft -->
+      <div class="col-6 border-0" style="background-color:inherit">
+        <img src="/Images/info.svg" class="card-img-top" alt="...">
+      </div>
+      <!-- Login Form -->
+      <div class="card col-6" style="background-color: #D4D6D7;">
+        <h1 class="h1 card-title pt-5 font-weight-bold " style="color:#1F679F">
+          LOGIN
+        </h1>
+        <div class="h-6 text-center-mb-2  card-subtitle" style="color:#1F679F">
+          PLEASE LOGIN TO USE SYSTEM
+        </div>
+        <div style="color:red">
+          @ViewData["Error"]
+        </div>
+        <form class="card-content mt-5" method="post" role="form" action="~/Login/PostLogin" style="background-color: #D4D6D7;">
+          <div class="mb-3  d-flex flex-column mx-auto">
+            <label for="username" class="text-start" style="color: #64829A;">Username</label>
+            <div class=" input-group">
+              <input required style="background-color: inherit;color:black" type="input" class="form-control border-end-0 border rounded-pill"
+                     id="exampleInputEmail" name="username">
+
+            </div>
+
+          </div>
+          <div class="mb-3 mx-auto d-flex flex-column">
+            <label for="password" class="text-start control-label" style="color: #64829A;">Password</label>
+            <div>
+              <input required style="background-color: inherit;color:black" type="password"
+                     class="form-control border-end-0 border rounded-pill" id="exampleInputPassword" name="password">
+            </div>
+
+          </div>
+          <div class="mb-3 mx-3 form-check">
+            <div class="custom-control custom-checkbox small " style="position: absolute;">
+              <input type="checkbox" class="custom-control-input no-border mx-2" id="customCheck" name="rememberMe"
+                     [ngModelOptions]="{standalone: true}">
+              <label style="color: #64829A;" class="custom-control-label" for="customCheck">Remember me?</label>
+            </div>
+          </div>
+          <button class="btn btn-primary btn-user btn-block btn-dark-blue btn-rounded"
+                  style="background-color:#17568F;width:90%" type="submit">
+            Submit
+          </button>
+        </form>
+        <hr>
+
+      </div>
+
+
+    </nav>
+  </div>
+
+</div>

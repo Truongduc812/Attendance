@@ -1,0 +1,86 @@
+﻿{
+    "version": 1,
+    "priority": 50,
+    "template": {
+        "mappings": {
+            "properties": {
+                "@timestamp": {
+                    "type": "date"
+                },
+                "connectionId": {
+                    "type": "keyword",
+                    "index": true,
+                    "index_options": "docs",
+                    "eager_global_ordinals": false,
+                    "norms": false,
+                    "split_queries_on_whitespace": false,
+                    "doc_values": true,
+                    "store": false
+                },
+                "messageId": {
+                    "type": "keyword"
+                },
+                "executeAt": {
+                    "type": "date"
+                },
+                "ADS_Local_iSendVarDateTime_0_": {
+                    "type": "long",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarDateTime_1_": {
+                    "type": "long",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarDateTime_2_": {
+                    "type": "long",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarDateTime_3_": {
+                    "type": "long",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarDateTime_4_": {
+                    "type": "long",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarDateTime_5_": {
+                    "type": "long",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarDateTime_6_": {
+                    "type": "long",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarDateTime_7_": {
+                    "type": "long",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarDateTime_8_": {
+                    "type": "long",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_iSendVarDateTime_9_": {
+                    "type": "long",
+                    "ignore_malformed": true,
+                    "coerce": true
+                }
+            }
+        }
+    },
+    "index_patterns": [
+        "device-data-isendvardatetime-second-001*"
+    ],
+    "data_stream": {
+        "hidden": false
+    },
+    "composed_of": []
+}

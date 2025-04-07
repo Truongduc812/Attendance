@@ -1,0 +1,46 @@
+﻿using iSoft.Common.Enums;
+using iSoft.Common.Utils;
+using iSoft.Database.Entities;
+using iSoft.Database.Entities.Interface;
+using iSoft.Database.Extensions;
+using iSoft.DBLibrary.Entities;
+using MathNet.Numerics.Differentiation;
+using Microsoft.AspNetCore.Mvc.Formatters;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Globalization;
+using System.Text.Json.Serialization;
+using static iSoft.Common.ConstCommon;
+
+namespace SourceBaseBE.Database.Entities
+{
+	[Table("WorkingDayUpdates")]
+	public class WorkingDayUpdateEntity : BaseCRUDEntity
+	{
+		[ForeignKey(nameof(WorkingDayEntity))]
+		public long? WorkingDayId { get; set; }
+		public WorkingDayEntity? WorkingDay { get; set; }
+		[ForeignKey(nameof(EmployeeEntity))]
+		public long? EmployeeId { get; set; }
+		public EmployeeEntity? Employee { get; set; }
+		[Column("working_date")]
+		public DateTime WorkingDate { get; set; }
+		[Column("time_in")]
+		public DateTime Time_In { get; set; }
+		[Column("time_out")]
+		public DateTime Time_Out { get; set; }
+		[Column("time_deviation")]
+		public long Time_Deviation { get; set; }
+		[Column("working_day_status")]
+		public EnumWorkingDayStatus WorkingDayStatus { get; set; }
+		[Column("working_type_id")]
+		[ForeignKey(nameof(WorkingTypeEntity))]
+		public long? WorkingTypeId { get; set; }
+		public WorkingTypeEntity? WorkingType { get; set; }
+		[Column("update_reasion")]
+		public string? Update_Reason { get; set; }
+		[Column("notes")]
+		public string? Notes { get; set; }
+		public virtual ICollection<WorkingDayApprovalEntity>? WorkingDayApprovals { get; set; }
+	}
+}

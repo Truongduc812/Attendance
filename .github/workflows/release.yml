@@ -1,0 +1,89 @@
+name: cicd release
+on:
+    # pull_request:
+    #     types: [closed]
+    #     branches:
+    #         - release
+
+    push:
+        branches:
+            - release
+
+jobs:
+    release:
+        # if: github.event.pull_request.merged == true
+        runs-on: [self-hosted, cicd]
+
+        steps:
+            - uses: TooMuch4U/actions-clean@v2.1
+            - name: Setup .NET
+              uses: actions/setup-dotnet@v4
+              with:
+                  dotnet-version: '7.0.x'
+
+            # - name: clone source if needed
+            #   run: |
+            #       cd /usr/app
+            #       mkdir PRPO || cd PRPO/
+            #       ls -a | grep PRPO-BE || git clone git@github.com:iSoft-Team/PRPO-BE.git
+
+            - name: pull latest source
+              run: |
+                  cd /usr/app/Attendance-Web-BE
+                  git fetch --all
+                  git stash --include-untracked
+                  git reset --hard
+                  git clean -fd
+                  git checkout release
+                  git pull origin release
+                  cat /etc/secret/attendance/env.at-auth.prod > src/SourceBaseBE.AuthenticationService/.env
+                  cat /etc/secret/attendance/env.at-main.prod > src/SourceBaseBE.MainService/.env
+
+            # release:
+            #     needs: build
+            #     runs-on: [self-hosted, dev]
+            #     steps:
+            # - uses: TooMuch4U/actions-clean@v2.1
+            #   docker build -t at-config:staging -f src/SourceBaseBE.RemoteConfig/Dockerfile .
+            #   docker rmi registry.i-soft.com.vn/at-config:staging || ls
+            #   docker tag at-config:staging registry.i-soft.com.vn/at-config:staging
+            #   docker build -t at-auth:staging -f src/SourceBaseBE.AuthenticationService/Dockerfile .
+            #   docker rmi registry.i-soft.com.vn/at-auth:staging || ls
+            #   docker tag at-auth:staging registry.i-soft.com.vn/at-auth:staging
+            #   docker build -t at-virtual:staging -f src/SourceBaseBE.VirtualDeviceService/Dockerfile .
+            #   docker rmi registry.i-soft.com.vn/at-virtual:staging || ls
+            #   docker tag at-virtual:staging registry.i-soft.com.vn/at-virtual:staging
+            #   docker build -t at-socket:staging -f src/SourceBaseBE.SocketIOServer/Dockerfile .
+            #   docker rmi registry.i-soft.com.vn/at-socket:staging || ls
+            #   docker tag at-socket:staging registry.i-soft.com.vn/at-socket:staging
+            - name: prepare services' images
+              run: |
+                  cd /usr/app/Attendance-Web-BE
+                  git checkout release
+                  docker build -t at-main:staging -f src/SourceBaseBE.MainService/Dockerfile .
+                  docker rmi registry.i-soft.com.vn/at-main:staging || ls
+                  docker tag at-main:staging registry.i-soft.com.vn/at-main:staging
+
+              #   docker push registry.i-soft.com.vn/at-config:staging
+              #   docker push registry.i-soft.com.vn/at-auth:staging
+              # docker push registry.i-soft.com.vn/at-virtual:staging
+              # docker push registry.i-soft.com.vn/at-socket:staging
+            - name: push image to registry
+              run: |
+                  docker push registry.i-soft.com.vn/at-main:staging
+
+    deploy:
+        needs: release
+
+        runs-on: [self-hosted, cicd]
+
+        steps:
+            - uses: TooMuch4U/actions-clean@v2.1
+            # docker service update attendance-swarm_at-config --image registry.i-soft.com.vn/at-config:staging
+            # docker service update attendance-swarm_at-auth --image registry.i-soft.com.vn/at-auth:staging
+            # docker service update attendance-swarm_at-virtual --image registry.i-soft.com.vn/at-virtual:staging
+            # docker service update attendance-swarm_at-socket --image registry.i-soft.com.vn/at-socket:staging
+            - name: start application in dev environment
+              run: |
+                  docker service update attendance-swarm_at-main --image registry.i-soft.com.vn/at-main:staging
+                  echo 'Deploy app DONE'

@@ -1,0 +1,183 @@
+﻿{
+    "version": 1,
+    "priority": 50,
+    "template": {
+        "mappings": {
+            "properties": {
+                "@timestamp": {
+                    "type": "date"
+                },
+                "connectionId": {
+                    "type": "keyword",
+                    "index": true,
+                    "index_options": "docs",
+                    "eager_global_ordinals": false,
+                    "norms": false,
+                    "split_queries_on_whitespace": false,
+                    "doc_values": true,
+                    "store": false
+                },
+                "messageId": {
+                    "type": "keyword"
+                },
+                "executeAt": {
+                    "type": "date"
+                },
+                "ADS_Local_plc1_LT01_PV_TK020": {
+                    "type": "double",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_plc1_ID_TANK_TK020": {
+                    "type": "long",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_plc1_LSH01_TK020": {
+                    "type": "boolean"
+                },
+                "ADS_Local_plc1_LT01_PV_TK019_T": {
+                    "type": "double",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_plc1_ID_TANK_TK019": {
+                    "type": "long",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_plc1_LSH01_TK019": {
+                    "type": "boolean"
+                },
+                "ADS_Local_plc1_LT01_PV_TK018": {
+                    "type": "double",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_plc1_ID_TANK_TK018": {
+                    "type": "long",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_plc1_LSH01_TK018": {
+                    "type": "boolean"
+                },
+                "ADS_Local_plc1_LT01_PV_TK017": {
+                    "type": "double",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_plc1_ID_TANK_TK017": {
+                    "type": "long",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_plc1_LSH01_TK017": {
+                    "type": "boolean"
+                },
+                "ADS_Local_plc1_PK009_AV13_OPENED": {
+                    "type": "boolean"
+                },
+                "ADS_Local_plc1_PK009_AV09_OPENED": {
+                    "type": "boolean"
+                },
+                "ADS_Local_plc1_PK009_AV08_OPENED": {
+                    "type": "boolean"
+                },
+                "ADS_Local_plc1_PK008_AV09_OPENED": {
+                    "type": "boolean"
+                },
+                "ADS_Local_plc1_PK008_AV08_OPENED": {
+                    "type": "boolean"
+                },
+                "ADS_Local_plc1_PK008_LS01": {
+                    "type": "boolean"
+                },
+                "ADS_Local_plc1_PK008_PRV01_OPENED": {
+                    "type": "boolean"
+                },
+                "ADS_Local_plc1_PK008_P01_RUN": {
+                    "type": "boolean"
+                },
+                "ADS_Local_plc1_PK008_P01_SPEED": {
+                    "type": "double",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_plc1_PK008_AV19_OPENED": {
+                    "type": "boolean"
+                },
+                "ADS_Local_plc1_PK008_PT01_VALUE": {
+                    "type": "double",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_plc1_PIG008_AV07_OPENED": {
+                    "type": "boolean"
+                },
+                "ADS_Local_plc1_PIG008_AV04_OPENED": {
+                    "type": "boolean"
+                },
+                "ADS_Local_plc1_PIG008_AV03_OPENED": {
+                    "type": "boolean"
+                },
+                "ADS_Local_plc1_PIG008_SV01_OPENED": {
+                    "type": "boolean"
+                },
+                "ADS_Local_plc1_PIG008_PX01": {
+                    "type": "boolean"
+                },
+                "ADS_Local_plc1_PIG008_AV06_OPENED": {
+                    "type": "boolean"
+                },
+                "ADS_Local_plc1_PIG008_AV05_OPENED": {
+                    "type": "boolean"
+                },
+                "ADS_Local_plc1_PK008_PX08": {
+                    "type": "boolean"
+                },
+                "ADS_Local_plc1_PIGRE008_SV02_OPENED": {
+                    "type": "boolean"
+                },
+                "ADS_Local_plc1_ID_TANK_TK_POSIMAT2": {
+                    "type": "long",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_plc1_PK008_AV26_OPENED": {
+                    "type": "boolean"
+                },
+                "ADS_Local_plc1_PK008_AV25_OPENED": {
+                    "type": "boolean"
+                },
+                "ADS_Local_plc1_ID_TANK_POSIMAT2": {
+                    "type": "long",
+                    "ignore_malformed": true,
+                    "coerce": true
+                },
+                "ADS_Local_plc1_PK008_AV27_OPENED": {
+                    "type": "boolean"
+                },
+                "ADS_Local_plc1_PK008_LS01_T": {
+                    "type": "boolean"
+                },
+                "ADS_Local_plc1_PK008_AV28_OPENED": {
+                    "type": "boolean"
+                },
+                "ADS_Local_plc1_PK004A_LSL03": {
+                    "type": "boolean"
+                },
+                "ADS_Local_plc1_PK004A_P03_RUN": {
+                    "type": "boolean"
+                }
+            }
+        }
+    },
+    "index_patterns": [
+        "device-data-process-second-001*"
+    ],
+    "data_stream": {
+        "hidden": false
+    },
+    "composed_of": []
+}

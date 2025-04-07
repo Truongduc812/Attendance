@@ -1,0 +1,83 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Enumerables\**" />
+    <Compile Remove="Repository\MainService\**" />
+    <Compile Remove="Repository\Production\**" />
+    <EmbeddedResource Remove="Enumerables\**" />
+    <EmbeddedResource Remove="Repository\MainService\**" />
+    <EmbeddedResource Remove="Repository\Production\**" />
+    <None Remove="Enumerables\**" />
+    <None Remove="Repository\MainService\**" />
+    <None Remove="Repository\Production\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Entities\readme.md" />
+    <None Remove="Enums\readme.md" />
+    <None Remove="Extensions\readme.md" />
+    <None Remove="Interfaces\readme.md" />
+    <None Remove="Migrations\readme.md" />
+    <None Remove="Models\readme.md" />
+    <None Remove="README.md" />
+    <None Remove="SeedData\readme.md" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Entities\readme.md" />
+    <Content Include="Enums\readme.md" />
+    <Content Include="Extensions\readme.md" />
+    <Content Include="Interfaces\readme.md" />
+    <Content Include="Migrations\readme.md" />
+    <Content Include="SeedData\readme.md" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="12.0.1" />
+    <PackageReference Include="ClickHouse.Client" Version="6.7.5" />
+    <PackageReference Include="ExcelMapper" Version="5.2.542" />
+    <PackageReference Include="LinqKit" Version="1.2.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.12" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.12">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.12">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="7.0.12" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="7.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
+    <PackageReference Include="Npgsql" Version="7.0.0" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="7.0.0" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL.Design" Version="1.1.0" />
+    <PackageReference Include="System.Linq.Dynamic.Core" Version="1.3.10" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Include="README.md">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\subs\iSoft.Core\iSoft.Common\iSoft.Common.csproj" />
+    <ProjectReference Include="..\..\subs\iSoft.Core\iSoft.ConnectionCommon\iSoft.ConnectionCommon.csproj" />
+    <ProjectReference Include="..\..\subs\iSoft.Core\iSoft.Database\iSoft.Database.csproj" />
+    <ProjectReference Include="..\..\subs\iSoft.Core\iSoft.DBLibrary\iSoft.DBLibrary.csproj" />
+    <ProjectReference Include="..\..\subs\iSoft.Core\iSoft.ExportLibrary\iSoft.ExportLibrary.csproj" />
+    <ProjectReference Include="..\..\subs\iSoft.Core\iSoft.Redis\iSoft.Redis.csproj" />
+  </ItemGroup>
+
+</Project>

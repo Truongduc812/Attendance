@@ -1,0 +1,22 @@
+{
+  "profiles": {
+    "SourceBaseBE.MainService": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "launchUrl": "http://localhost:2803",
+      "applicationUrl": "https://localhost:2853;http://localhost:2803"
+    },
+    "Docker": {
+      "commandName": "Docker",
+      "launchBrowser": true,
+      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}",
+      "publishAllPorts": true,
+      "useSSL": true,
+      "httpPort": 2803,
+      "sslPort": 2853
+    }
+  }
+}
